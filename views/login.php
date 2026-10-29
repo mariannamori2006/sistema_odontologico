@@ -33,11 +33,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VetCare | Acceso</title>
-    <link rel="stylesheet" href="../assetes/css/vet.css">
+    <link rel="stylesheet" href="../assetes/css/odont.css">
 </head>
 <body class="auth">
     <div class="auth-box">
-        <div class="brand">🐾 VetCare <small>Gestión veterinaria</small></div>
+        <div class="brand">🐾 DentalClinic <small>Gestión odontológica</small></div>
         <h2>Bienvenido</h2>
 
         <?php if ($error !== ''): ?>

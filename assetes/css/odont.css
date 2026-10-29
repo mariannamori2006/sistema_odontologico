@@ -1,0 +1,247 @@
+/* ==========================================================
+   DentalClinic · Login
+   Paleta: índigo (confianza), lavanda suave (calma),
+   blanco esmalte (fondo de tarjeta) y tinta azul noche (texto)
+   ========================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap");
+
+:root {
+    --indigo-900: #1b2358;
+    --indigo-700: #3846c9;
+    --indigo-600: #4f5de0;
+    --lav-100: #e8ebff;
+    --lav-50:  #f5f6ff;
+    --enamel:   #ffffff;
+    --ink:      #1c2142;
+    --ink-soft: #5d6488;
+    --line:     #d5d9f5;
+    --danger-bg: #fdecec;
+    --danger-ink: #8a1f1f;
+    --ok-bg: #e3f6ea;
+    --ok-ink: #1d6b3b;
+    --radius: 14px;
+    --font: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body.auth {
+    margin: 0;
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: grid;
+    place-items: center;
+    padding: 24px 16px;
+    font-family: var(--font);
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--ink);
+    background:
+        radial-gradient(circle at 12% 18%, var(--lav-100) 0 180px, transparent 181px),
+        radial-gradient(circle at 88% 82%, #dbe0ff 0 240px, transparent 241px),
+        var(--lav-50);
+}
+
+/* ---------- Tarjeta ---------- */
+
+.auth-box {
+    width: 100%;
+    max-width: 420px;
+    background: var(--enamel);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: 0 18px 40px -18px rgba(27, 35, 88, 0.35);
+    overflow: hidden;
+}
+
+/* Cabecera de marca: el único bloque de color fuerte */
+.brand {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 24px 32px;
+    background: var(--indigo-900);
+    color: #fff;
+    font-size: 1.35rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+}
+
+.brand small {
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: #b9c0f5;
+    letter-spacing: 0;
+}
+
+.auth-box h2 {
+    margin: 28px 32px 4px;
+    font-size: 1.5rem;
+    line-height: 1.25;
+    font-weight: 700;
+    color: var(--indigo-900);
+}
+
+/* ---------- Mensajes (error / éxito) ---------- */
+
+.auth-box p[role="status"] {
+    margin: 12px 32px 0;
+    padding: 10px 14px;
+    border-radius: 10px;
+    border-left: 4px solid var(--danger-ink);
+    background: var(--danger-bg);
+    color: var(--danger-ink);
+    font-size: 0.92rem;
+}
+
+/* El mensaje de "Usuario creado" también usa role="status".
+   Si quieres que se vea verde, agrega class="ok" en el PHP
+   cuando el registro sea exitoso. */
+.auth-box p[role="status"].ok {
+    border-left-color: var(--ok-ink);
+    background: var(--ok-bg);
+    color: var(--ok-ink);
+}
+
+/* ---------- Formulario ---------- */
+
+.auth-box form {
+    display: flex;
+    flex-direction: column;
+    padding: 16px 32px 8px;
+}
+
+.auth-box label {
+    margin: 14px 0 6px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--ink);
+}
+
+.auth-box input {
+    width: 100%;
+    padding: 12px 14px;
+    font: inherit;
+    color: var(--ink);
+    background: var(--lav-50);
+    border: 1.5px solid var(--line);
+    border-radius: 10px;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+}
+
+.auth-box input::placeholder {
+    color: #8d94b8;
+}
+
+.auth-box input:hover {
+    border-color: #aab2ea;
+}
+
+.auth-box input:focus {
+    outline: none;
+    background: var(--enamel);
+    border-color: var(--indigo-600);
+    box-shadow: 0 0 0 4px rgba(79, 93, 224, 0.2);
+}
+
+/* ---------- Botones ---------- */
+
+.actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 24px;
+}
+
+.actions button {
+    padding: 12px 16px;
+    font: inherit;
+    font-weight: 600;
+    border-radius: 10px;
+    border: 1.5px solid transparent;
+    cursor: pointer;
+    transition: background-color 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
+}
+
+/* Acción principal: Ingresar, ocupa todo el ancho */
+.actions button:first-child {
+    grid-column: 1 / -1;
+    background: var(--indigo-700);
+    color: #fff;
+}
+
+.actions button:first-child:hover {
+    background: var(--indigo-900);
+}
+
+/* Acciones secundarias */
+.actions button.secondary {
+    background: transparent;
+    color: var(--indigo-700);
+    border-color: var(--line);
+}
+
+.actions button.secondary:hover {
+    background: var(--lav-100);
+    border-color: var(--indigo-600);
+}
+
+.actions button:active {
+    transform: translateY(1px);
+}
+
+.actions button:focus-visible {
+    outline: 3px solid var(--indigo-600);
+    outline-offset: 2px;
+}
+
+/* ---------- Nota inferior ---------- */
+
+.auth-note {
+    margin: 8px 32px 28px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+}
+
+/* ---------- Móvil ---------- */
+
+@media (max-width: 480px) {
+    .brand {
+        padding: 20px 22px;
+    }
+
+    .auth-box h2 {
+        margin: 24px 22px 4px;
+    }
+
+    .auth-box p[role="status"] {
+        margin: 12px 22px 0;
+    }
+
+    .auth-box form {
+        padding: 12px 22px 8px;
+    }
+
+    .auth-note {
+        margin: 8px 22px 24px;
+    }
+
+    .actions {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ---------- Accesibilidad ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+    }
+}
