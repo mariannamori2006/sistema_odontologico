@@ -1,7 +1,8 @@
 /* ==========================================================
-   DentalClinic · Login
-   Paleta: índigo (confianza), lavanda suave (calma),
-   blanco esmalte (fondo de tarjeta) y tinta azul noche (texto)
+   DentalClinic · odont.css (estilos compartidos)
+   Lo cargan layout.php y login.php.
+   Contiene: variables, base, cabecera, menú, tablas,
+   formularios, botones y mensajes.
    ========================================================== */
 
 @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap");
@@ -12,13 +13,13 @@
     --indigo-600: #4f5de0;
     --lav-100: #e8ebff;
     --lav-50:  #f5f6ff;
-    --enamel:   #ffffff;
+    --enamel:  #ffffff;
     --ink:      #1c2142;
     --ink-soft: #5d6488;
     --line:     #d5d9f5;
-    --danger-bg: #fdecec;
+    --danger-bg:  #fdecec;
     --danger-ink: #8a1f1f;
-    --ok-bg: #e3f6ea;
+    --ok-bg:  #e3f6ea;
     --ok-ink: #1d6b3b;
     --radius: 14px;
     --font: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
@@ -30,119 +31,228 @@
     box-sizing: border-box;
 }
 
-body.auth {
+/* ---------- Base de las páginas internas ---------- */
+/* body.auth (login) tiene su propio diseño en style.css */
+
+body:not(.auth) {
     margin: 0;
     min-height: 100vh;
-    min-height: 100dvh;
-    display: grid;
-    place-items: center;
-    padding: 24px 16px;
+    display: flex;
+    flex-direction: column;
     font-family: var(--font);
     font-size: 1rem;
     line-height: 1.5;
     color: var(--ink);
-    background:
-        radial-gradient(circle at 12% 18%, var(--lav-100) 0 180px, transparent 181px),
-        radial-gradient(circle at 88% 82%, #dbe0ff 0 240px, transparent 241px),
-        var(--lav-50);
+    background: var(--lav-50);
 }
 
-/* ---------- Tarjeta ---------- */
+a {
+    color: var(--indigo-700);
+}
 
-.auth-box {
+/* ---------- Cabecera y menú superior ---------- */
+
+header {
+    background: var(--indigo-900);
+    color: #fff;
+}
+
+.header-top {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px 16px;
+    padding: 14px 28px;
+    font-size: 0.95rem;
+}
+
+.header-top strong {
+    font-size: 1.1rem;
+}
+
+.header-top a {
+    color: #b9c0f5;
+    font-weight: 600;
+}
+
+.header-top a:hover {
+    color: #fff;
+}
+
+.nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    padding: 0 20px;
+    background: var(--indigo-700);
+}
+
+.nav a {
+    padding: 12px 14px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    border-bottom: 3px solid transparent;
+    transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.nav a:hover {
+    background: var(--indigo-600);
+    border-bottom-color: #fff;
+}
+
+.nav a:focus-visible,
+.header-top a:focus-visible {
+    outline: 3px solid #fff;
+    outline-offset: -3px;
+}
+
+/* ---------- Estructura: contenido + menú lateral ---------- */
+
+.shell {
+    flex: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 240px;
+    gap: 24px;
     width: 100%;
-    max-width: 420px;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 28px;
+}
+
+main {
+    min-width: 0;
     background: var(--enamel);
     border: 1px solid var(--line);
     border-radius: var(--radius);
-    box-shadow: 0 18px 40px -18px rgba(27, 35, 88, 0.35);
-    overflow: hidden;
+    padding: 28px;
 }
 
-/* Cabecera de marca: el único bloque de color fuerte */
-.brand {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-    padding: 24px 32px;
-    background: var(--indigo-900);
-    color: #fff;
-    font-size: 1.35rem;
-    font-weight: 700;
-    letter-spacing: 0.01em;
-}
-
-.brand small {
-    font-size: 0.85rem;
-    font-weight: 400;
-    color: #b9c0f5;
-    letter-spacing: 0;
-}
-
-.auth-box h2 {
-    margin: 28px 32px 4px;
-    font-size: 1.5rem;
+main h1 {
+    margin: 0 0 20px;
+    font-size: 1.6rem;
     line-height: 1.25;
-    font-weight: 700;
     color: var(--indigo-900);
 }
 
-/* ---------- Mensajes (error / éxito) ---------- */
-
-.auth-box p[role="status"] {
-    margin: 12px 32px 0;
-    padding: 10px 14px;
-    border-radius: 10px;
-    border-left: 4px solid var(--danger-ink);
-    background: var(--danger-bg);
-    color: var(--danger-ink);
-    font-size: 0.92rem;
+main h2,
+main h3 {
+    color: var(--indigo-900);
 }
 
-/* El mensaje de "Usuario creado" también usa role="status".
-   Si quieres que se vea verde, agrega class="ok" en el PHP
-   cuando el registro sea exitoso. */
-.auth-box p[role="status"].ok {
-    border-left-color: var(--ok-ink);
+aside {
+    align-self: start;
+    background: var(--enamel);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 20px;
+}
+
+aside h3 {
+    margin: 0 0 12px;
+    font-size: 1rem;
+    color: var(--indigo-900);
+}
+
+aside a {
+    display: block;
+    padding: 9px 12px;
+    border-radius: 8px;
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 0.95rem;
+}
+
+aside a:hover {
+    background: var(--lav-100);
+    color: var(--indigo-700);
+}
+
+footer {
+    padding: 18px 28px;
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    border-top: 1px solid var(--line);
+    background: var(--enamel);
+}
+
+/* ---------- Mensajes ---------- */
+
+.notice {
+    margin: 0 0 20px;
+    padding: 12px 16px;
+    border-radius: 10px;
+    border-left: 4px solid var(--ok-ink);
     background: var(--ok-bg);
     color: var(--ok-ink);
+    font-size: 0.95rem;
 }
 
-/* ---------- Formulario ---------- */
-
-.auth-box form {
-    display: flex;
-    flex-direction: column;
-    padding: 16px 32px 8px;
+.notice.error {
+    border-left-color: var(--danger-ink);
+    background: var(--danger-bg);
+    color: var(--danger-ink);
 }
 
-.auth-box label {
+/* ---------- Tablas ---------- */
+
+main table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+}
+
+main th,
+main td {
+    padding: 11px 14px;
+    text-align: left;
+    border-bottom: 1px solid var(--line);
+}
+
+main th {
+    background: var(--lav-100);
+    color: var(--indigo-900);
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+main tbody tr:hover {
+    background: var(--lav-50);
+}
+
+.table-wrap {
+    overflow-x: auto;
+}
+
+/* ---------- Formularios ---------- */
+
+main label {
+    display: block;
     margin: 14px 0 6px;
     font-size: 0.9rem;
     font-weight: 600;
-    color: var(--ink);
 }
 
-.auth-box input {
+main input,
+main select,
+main textarea {
     width: 100%;
-    padding: 12px 14px;
+    max-width: 520px;
+    padding: 11px 14px;
     font: inherit;
     color: var(--ink);
     background: var(--lav-50);
     border: 1.5px solid var(--line);
     border-radius: 10px;
-    transition: border-color 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
-.auth-box input::placeholder {
-    color: #8d94b8;
-}
-
-.auth-box input:hover {
-    border-color: #aab2ea;
-}
-
-.auth-box input:focus {
+main input:focus,
+main select:focus,
+main textarea:focus {
     outline: none;
     background: var(--enamel);
     border-color: var(--indigo-600);
@@ -151,90 +261,76 @@ body.auth {
 
 /* ---------- Botones ---------- */
 
-.actions {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    margin-top: 24px;
-}
-
-.actions button {
-    padding: 12px 16px;
+main button,
+main .btn {
+    display: inline-block;
+    padding: 10px 18px;
     font: inherit;
     font-weight: 600;
-    border-radius: 10px;
-    border: 1.5px solid transparent;
-    cursor: pointer;
-    transition: background-color 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
-}
-
-/* Acción principal: Ingresar, ocupa todo el ancho */
-.actions button:first-child {
-    grid-column: 1 / -1;
-    background: var(--indigo-700);
     color: #fff;
+    background: var(--indigo-700);
+    border: 1.5px solid transparent;
+    border-radius: 10px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
 }
 
-.actions button:first-child:hover {
+main button:hover,
+main .btn:hover {
     background: var(--indigo-900);
 }
 
-/* Acciones secundarias */
-.actions button.secondary {
-    background: transparent;
+main button.secondary,
+main .btn.secondary {
     color: var(--indigo-700);
+    background: transparent;
     border-color: var(--line);
 }
 
-.actions button.secondary:hover {
+main button.secondary:hover,
+main .btn.secondary:hover {
     background: var(--lav-100);
     border-color: var(--indigo-600);
 }
 
-.actions button:active {
-    transform: translateY(1px);
+main button.danger,
+main .btn.danger {
+    background: var(--danger-ink);
 }
 
-.actions button:focus-visible {
+main button:focus-visible,
+main .btn:focus-visible {
     outline: 3px solid var(--indigo-600);
     outline-offset: 2px;
 }
 
-/* ---------- Nota inferior ---------- */
-
-.auth-note {
-    margin: 8px 32px 28px;
-    padding-top: 16px;
-    border-top: 1px solid var(--line);
-    font-size: 0.85rem;
-    color: var(--ink-soft);
+main .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
 }
 
-/* ---------- Móvil ---------- */
+/* ---------- Pantallas pequeñas ---------- */
 
-@media (max-width: 480px) {
-    .brand {
-        padding: 20px 22px;
-    }
-
-    .auth-box h2 {
-        margin: 24px 22px 4px;
-    }
-
-    .auth-box p[role="status"] {
-        margin: 12px 22px 0;
-    }
-
-    .auth-box form {
-        padding: 12px 22px 8px;
-    }
-
-    .auth-note {
-        margin: 8px 22px 24px;
-    }
-
-    .actions {
+@media (max-width: 900px) {
+    .shell {
         grid-template-columns: 1fr;
+        padding: 16px;
+    }
+
+    /* El menú lateral repite el superior: en móvil se oculta */
+    aside {
+        display: none;
+    }
+
+    main {
+        padding: 20px;
+    }
+
+    .header-top {
+        padding: 12px 16px;
     }
 }
 

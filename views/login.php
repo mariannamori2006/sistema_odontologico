@@ -2,6 +2,7 @@
 require_once __DIR__ . '/../controller/AuthController.php';
 
 $error = '';
+$ok = false;
 $auth = new AuthController();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -16,6 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $_POST['password'] ?? ''
             );
             $error = 'Usuario creado. Ahora puedes iniciar sesión.';
+            $ok = true;
         } elseif ($accion === 'login') {
             if ($auth->ingresar(trim($_POST['email'] ?? ''), $_POST['password'] ?? '')) {
                 redirigir('home.php');
@@ -32,37 +34,57 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VetCare | Acceso</title>
+    <title>DentalClinic | Acceso</title>
     <link rel="stylesheet" href="../assetes/css/odont.css">
+    <link rel="stylesheet" href="../assetes/css/style.css">
 </head>
 <body class="auth">
-    <div class="auth-box">
-        <div class="brand">🦷 DentalClinic <small>Gestión odontológica</small></div>
-        <h2>Bienvenido</h2>
+    <div class="auth-shell">
 
-        <?php if ($error !== ''): ?>
-            <p role="status"><?= e($error) ?></p>
-        <?php endif; ?>
-
-        <form method="post">
-            <input type="hidden" name="csrf" value="<?= e(csrf()) ?>">
-
-            <label for="nombre">Nombre (solo para registrarse)</label>
-            <input id="nombre" name="nombre" placeholder="Nombre completo">
-
-            <label for="email">Correo electrónico</label>
-            <input id="email" name="email" type="email" autocomplete="email" required>
-
-            <label for="password">Contraseña</label>
-            <input id="password" name="password" type="password" autocomplete="current-password" required>
-
-            <div class="actions">
-                <button type="submit" name="accion" value="login">Ingresar</button>
-                <button type="submit" name="accion" value="registro" class="secondary">Registrarme</button>
-                <button type="reset" class="secondary">Cancelar</button>
+        <section class="auth-hero">
+            <div class="brand">
+                <span class="brand-mark" aria-hidden="true">🦷</span>
+                DentalClinic
             </div>
-        </form>
-        <p class="auth-note">Para registrarte, escribe tu nombre, correo y una contraseña de al menos 10 caracteres.</p>
+
+            <img class="auth-art" src="../imagenes/dental_logo.png" alt="">
+
+            <div>
+                <h1>Cada sonrisa, bien cuidada.</h1>
+                <p>Gestiona pacientes, citas y pagos de tu clínica desde un solo lugar.</p>
+            </div>
+        </section>
+
+        <section class="auth-box">
+            <h2>Bienvenido</h2>
+            <p class="auth-sub">Ingresa con tu cuenta para continuar.</p>
+
+            <?php if ($error !== ''): ?>
+                <p role="status"<?= $ok ? ' class="ok"' : '' ?>><?= e($error) ?></p>
+            <?php endif; ?>
+
+            <form method="post">
+                <input type="hidden" name="csrf" value="<?= e(csrf()) ?>">
+
+                <label for="nombre">Nombre (solo para registrarse)</label>
+                <input id="nombre" name="nombre" placeholder="Nombre completo">
+
+                <label for="email">Correo electrónico</label>
+                <input id="email" name="email" type="email" autocomplete="email" required>
+
+                <label for="password">Contraseña</label>
+                <input id="password" name="password" type="password" autocomplete="current-password" required>
+
+                <div class="actions">
+                    <button type="submit" name="accion" value="login">Ingresar</button>
+                    <button type="submit" name="accion" value="registro" class="secondary">Registrarme</button>
+                    <button type="reset" class="secondary">Cancelar</button>
+                </div>
+            </form>
+
+            <p class="auth-note">Para registrarte, escribe tu nombre, correo y una contraseña de al menos 10 caracteres.</p>
+        </section>
+
     </div>
 </body>
 </html>

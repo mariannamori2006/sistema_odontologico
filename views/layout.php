@@ -10,13 +10,13 @@ function layoutStart(string $titulo): void
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title><?= e($titulo) ?> | VetCare</title>
-        <link rel="stylesheet" href="../assetes/css/vet.css">
+        <title><?= e($titulo) ?> | DentalClinic</title>
+        <link rel="stylesheet" href="../assetes/css/odont.css">
     </head>
     <body>
         <header>
             <div class="header-top">
-                <strong>🐾 VetCare · Clínica veterinaria</strong>
+                <strong>🦷 DentalClinic · Clínica odontológica</strong>
                 <span><?= e($_SESSION['nombre'] ?? '') ?> · <a href="logout.php">Cerrar sesión</a></span>
             </div>
             <nav class="nav" aria-label="Menú principal">
@@ -49,7 +49,7 @@ function layoutEnd(): void
                 <?php endforeach; ?>
             </aside>
         </div>
-        <footer>© <?= date('Y') ?> VetCare · Sistema veterinario</footer>
+        <footer>© <?= date('Y') ?> DentalClinic · Sistema odontológico</footer>
     </body>
     </html>
     <?php
