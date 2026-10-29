@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body class="auth">
     <div class="auth-box">
-        <div class="brand">🐾 DentalClinic <small>Gestión odontológica</small></div>
+        <div class="brand">🦷 DentalClinic <small>Gestión odontológica</small></div>
         <h2>Bienvenido</h2>
 
         <?php if ($error !== ''): ?>

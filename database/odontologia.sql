@@ -104,18 +104,8 @@ CREATE TABLE IF NOT EXISTS reporte (
     FOREIGN KEY (odontologo_id) REFERENCES odontologo (id)
 )  ENGINE=INNODB;
 
-INSERT INTO servicio (nombre, descripcion, precio, duracion_min)
-SELECT 'Consulta general', 'Evaluación clínica', 60, 30
-WHERE NOT EXISTS (SELECT 1 FROM servicios WHERE nombre = 'Consulta general');
-
-INSERT INTO servicio (nombre, descripcion, precio, duracion_min)
-SELECT 'Limpieza dental', 'Profilaxis y remoción de sarro', 80, 45
-WHERE NOT EXISTS (SELECT 1 FROM servicios WHERE nombre = 'Limpieza dental');
-
-INSERT INTO servicio (nombre, descripcion, precio, duracion_min)
-SELECT 'Extracción simple', 'Extracción de pieza dental', 120, 40
-WHERE NOT EXISTS (SELECT 1 FROM servicios WHERE nombre = 'Extracción simple');
-
-INSERT INTO servicio (nombre, descripcion, precio, duracion_min)
-SELECT 'Endodoncia', 'Tratamiento de conductos', 350, 90
-WHERE NOT EXISTS (SELECT 1 FROM servicios WHERE nombre = 'Endodoncia');
+INSERT IGNORE INTO servicio (nombre, descripcion, precio, duracion_min) VALUES
+('Consulta general', 'Evaluación clínica', 60, 30),
+('Limpieza dental', 'Profilaxis y remoción de sarro', 80, 45),
+('Extracción simple', 'Extracción de pieza dental', 120, 40),
+('Endodoncia', 'Tratamiento de conductos', 350, 90);
