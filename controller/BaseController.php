@@ -51,11 +51,11 @@ function notificar(string $mensaje): void
 function validarDatos(array $campos, array $datos): array
 {
     $salida = [];
-    $referencias = ['duenos', 'mascotas', 'veterinarios', 'servicios', 'citas', 'diagnosticos'];
+    $referencias = ['pacientes', 'odontologos', 'servicios', 'citas', 'diagnosticos'];
     $opciones = [
         'estado_cita' => ['pendiente', 'confirmada', 'atendida', 'cancelada'],
         'estado_pago' => ['pendiente', 'pagado', 'anulado'],
-        'metodo_pago' => ['contado', 'tarjeta_credito', 'tarjeta_debito', 'yape'],
+        'metodo_pago' => ['efectivo', 'tarjeta_credito', 'tarjeta_debito', 'yape'],
     ];
 
     foreach ($campos as $campo => $tipo) {
@@ -101,11 +101,10 @@ function validarDatos(array $campos, array $datos): array
 function modulos(): array
 {
     return [
-        'duenos' => ['nombre' => 'Dueños', 'url' => 'duenos.php'],
-        'veterinarios' => ['nombre' => 'Veterinarios', 'url' => 'veterinarios.php'],
-        'mascotas' => ['nombre' => 'Mascotas', 'url' => 'mascotas.php'],
+        'pacientes' => ['nombre' => 'Pacientes', 'url' => 'pacientes.php'],
+        'odontologos' => ['nombre' => 'Odontólogos', 'url' => 'odontologos.php'],
         'servicios' => ['nombre' => 'Servicios', 'url' => 'servicios.php'],
-        'citas' => ['nombre' => 'Citas veterinarias', 'url' => 'citas.php'],
+        'citas' => ['nombre' => 'Citas', 'url' => 'citas.php'],
         'diagnosticos' => ['nombre' => 'Diagnósticos', 'url' => 'diagnosticos.php'],
         'tratamientos' => ['nombre' => 'Tratamientos', 'url' => 'tratamientos.php'],
         'pagos' => ['nombre' => 'Pagos', 'url' => 'pagos.php'],

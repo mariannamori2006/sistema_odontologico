@@ -7,7 +7,7 @@ class Usuario
 
     public function porCorreo(string $email): array|false
     {
-        $consulta = $this->db->prepare('SELECT * FROM usuarios WHERE email = ?');
+        $consulta = $this->db->prepare('SELECT * FROM usuario WHERE email = ?');
         $consulta->execute([$email]);
         return $consulta->fetch();
     }
@@ -15,7 +15,7 @@ class Usuario
     public function crear(string $nombre, string $email, string $password): void
     {
         $consulta = $this->db->prepare(
-            "INSERT INTO usuarios (nombre, email, password_hash, rol) VALUES (?, ?, ?, 'recepcion')"
+            "INSERT INTO usuario (nombre, email, password_hash, rol) VALUES (?, ?, ?, 'recepcion')"
         );
         $consulta->execute([$nombre, $email, password_hash($password, PASSWORD_DEFAULT)]);
     }

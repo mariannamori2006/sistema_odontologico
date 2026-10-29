@@ -3,7 +3,7 @@
 class Database
 {
     private string $host = 'localhost';
-    private string $name = 'veterinaria_db';
+    private string $name = 'odontologia_db';
     private string $user = 'root';
     private string $port = '3307';
     private string $password = '';
