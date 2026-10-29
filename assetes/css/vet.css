@@ -1,0 +1,244 @@
+* {
+    box-sizing:border-box
+}
+body {
+    margin:0;
+    font-family:Arial,sans-serif;
+    color:#203047;
+    background:#f3f7fb;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column
+}
+a {
+    color:#087b84;
+    text-decoration:none
+}
+header {
+    background:#fff;
+    box-shadow:0 3px 18px #102c4a16
+}
+.header-top {
+    background:#103a56;
+    color:#fff;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 4%;
+    gap:15px
+}
+.header-top a {
+    color:#b4f4e5
+}
+.nav {
+    display:flex;
+    gap:18px;
+    padding:14px 4%;
+    overflow-x:auto;
+    white-space:nowrap
+}
+.nav a {
+    font-size:14px;
+    font-weight:bold
+}
+.shell {
+    display:grid;
+    grid-template-columns:minmax(0,1fr) 220px;
+    gap:24px;
+    max-width:1500px;
+    width:100%;
+    margin:0 auto;
+    padding:28px 3%;
+    flex:1
+}
+main {
+    min-width:0
+}
+h1 {
+    font-size:28px;
+    margin:0 0 18px
+}
+aside {
+    background:#fff;
+    border-radius:16px;
+    padding:20px;
+    align-self:start;
+    box-shadow:0 4px 18px #1232
+}
+aside a {
+    display:block;
+    padding:10px 4px;
+    border-bottom:1px solid #edf1f5
+}
+.cards {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+    margin-top:24px
+}
+.card {
+    background:#fff;
+    border-radius:17px;
+    overflow:hidden;
+    box-shadow:0 6px 22px #102c4a18;
+    transition:transform .2s
+}
+.card:hover {
+    transform:translateY(-5px)
+}
+.card img {
+    width:100%;
+    height:150px;
+    object-fit:cover
+}
+.card div {
+    padding:18px
+}
+.card h2 {
+    color:#123a52;
+    font-size:20px
+}
+.card span {
+    color:#078a88
+}
+.panel {
+    background:white;
+    border-radius:16px;
+    padding:24px;
+    margin:18px 0;
+    box-shadow:0 4px 20px #1231
+}
+.form-grid {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:15px
+}
+label {
+    display:block;
+    font-weight:600;
+    font-size:14px
+}
+input,select,textarea {
+    display:block;
+    width:100%;
+    padding:12px;
+    border:1px solid #cbd7df;
+    border-radius:9px;
+    margin-top:7px;
+    font:inherit
+}
+textarea {
+    min-height:80px
+}
+button,.btn {
+    border:0;
+    border-radius:9px;
+    background:#087f88;
+    color:white;
+    padding:11px 16px;
+    cursor:pointer;
+    display:inline-block;
+    font:inherit
+}
+.secondary {
+    background:#e5edf1;
+    color:#29485b
+}
+.danger {
+    background:#bc344b;
+    padding:7px 10px
+}
+.actions {
+    display:flex;
+    align-items:center;
+    gap:8px;
+    flex-wrap:wrap
+}
+.table-scroll {
+    overflow:auto
+}
+table {
+    border-collapse:collapse;
+    width:100%;
+    font-size:14px
+}
+th,td {
+    text-align:left;
+    border-bottom:1px solid #e4edf2;
+    padding:12px;
+    max-width:280px;
+    overflow-wrap:anywhere
+}
+th {
+    background:#e7f6f5
+}
+td form {
+    display:inline
+}
+.notice {
+    color:#077e52
+}
+.error {
+    color:#ad233a
+}
+footer {
+    background:#103a56;
+    color:white;
+    text-align:center;
+    padding:22px;
+    margin-top:auto
+}
+.auth {
+    justify-content:center;
+    align-items:center;
+    padding:24px;
+    background:linear-gradient(135deg,#103a56,#0e9b91)
+}
+.auth-box {
+    background:white;
+    width:min(100%,470px);
+    padding:36px;
+    border-radius:22px;
+    box-shadow:0 20px 70px #09253655
+}
+.auth-box label {
+    margin:14px 0
+}
+.auth-box .actions {
+    margin:18px 0
+}
+.brand {
+    font-size:32px;
+    font-weight:bold;
+    color:#087f88
+}
+.brand small {
+    display:block;
+    font-size:14px;
+    color:#60778a
+}
+@media(max-width:850px) {
+    .shell {
+        grid-template-columns:1fr
+    }
+    aside {
+        order:-1;
+        display:flex;
+        gap:10px;
+        overflow:auto;
+        align-items:center
+    }
+    aside h3 {
+        display:none
+    }
+    aside a {
+        white-space:nowrap;
+        border:0
+    }
+    .header-top {
+        flex-wrap:wrap
+    }
+    .nav {
+        gap:14px
+    }
+}
