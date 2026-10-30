@@ -1,8 +1,8 @@
 <?php
-require_once __DIR__ . '/../controller/DuenoController.php';
+require_once __DIR__ . '/../controller/OdontologoController.php';
 
 exigirSesion();
-$controller = new DuenoController();
+$controller = new OdontologoController();
 $error = $controller->procesar();
 
 $edit = isset($_GET['editar'])
@@ -13,4 +13,4 @@ $rows = $controller->modelo->listar();
 $campos = $controller->campos;
 $titulo = $controller->titulo;
 
-require __DIR__ . '/duenos/index.php';
+require __DIR__ . '/odontologos/index.php';

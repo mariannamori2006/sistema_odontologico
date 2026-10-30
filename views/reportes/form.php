@@ -6,7 +6,7 @@
         <label>
             <?= e(ucwords(str_replace('_', ' ', $campo))) ?>
 
-            <?php if (in_array($tipo, ['duenos', 'mascotas', 'veterinarios', 'servicios', 'citas', 'diagnosticos'], true)): ?>
+            <?php if (in_array($tipo, ['paciente', 'odontologo', 'servicio', 'cita', 'diagnostico'], true)): ?>
                 <?php
                 $tabla = $tipo;
                 $columna = in_array($tipo, ['citas', 'diagnosticos'], true) ? 'id' : 'nombre';

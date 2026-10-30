@@ -1,8 +1,8 @@
 <?php
 require_once __DIR__ . '/BaseModel.php';
 
-class Veterinario extends BaseModel
+class Odontologo extends BaseModel
 {
-    protected string $tabla = 'veterinarios';
+    protected string $tabla = 'odontologo';
     protected array $columnas = ['nombre', 'colegiatura', 'especialidad', 'telefono', 'email'];
 }

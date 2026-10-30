@@ -341,3 +341,226 @@ main .actions {
         transition: none !important;
     }
 }
+
+/* ==========================================================
+   Formularios, paneles y listas de los módulos
+   Pegar al FINAL de odont.css
+   ========================================================== */
+
+/* ---------- Mensaje de error ---------- */
+
+p.error {
+    margin: 0 0 20px;
+    padding: 12px 16px;
+    border-radius: 10px;
+    border-left: 4px solid var(--danger-ink);
+    background: var(--danger-bg);
+    color: var(--danger-ink);
+    font-size: 0.95rem;
+}
+
+/* ---------- Paneles ---------- */
+
+.panel {
+    margin-bottom: 24px;
+    padding: 28px;
+    background: var(--lav-50);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+}
+
+.panel:last-of-type {
+    margin-bottom: 0;
+}
+
+.panel h2 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 22px;
+    font-size: 1.2rem;
+    color: var(--indigo-900);
+}
+
+.panel h2 .count {
+    padding: 2px 12px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--indigo-700);
+    background: var(--lav-100);
+    border-radius: 999px;
+}
+
+/* ---------- Formulario en dos columnas ---------- */
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px 24px;
+}
+
+.form-grid label {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--ink);
+}
+
+.form-grid input,
+.form-grid select,
+.form-grid textarea {
+    width: 100%;
+    max-width: none;
+    height: 46px;
+    padding: 0 14px;
+    font: inherit;
+    font-weight: 400;
+    color: var(--ink);
+    background: var(--enamel);
+    border: 1.5px solid var(--line);
+    border-radius: 10px;
+}
+
+.form-grid textarea {
+    height: auto;
+    min-height: 100px;
+    padding: 12px 14px;
+    resize: vertical;
+}
+
+.form-grid select {
+    padding-right: 40px;
+    appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1.5l5 5 5-5' fill='none' stroke='%233846c9' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+}
+
+.form-grid input:hover,
+.form-grid select:hover,
+.form-grid textarea:hover {
+    border-color: #aab2ea;
+}
+
+.form-grid input:focus,
+.form-grid select:focus,
+.form-grid textarea:focus {
+    outline: none;
+    border-color: var(--indigo-600);
+    box-shadow: 0 0 0 4px rgba(79, 93, 224, 0.18);
+}
+
+.form-grid .full {
+    grid-column: 1 / -1;
+}
+
+.form-grid .actions {
+    grid-column: 1 / -1;
+    margin-top: 4px;
+    padding-top: 22px;
+    border-top: 1px solid var(--line);
+}
+
+/* Botones del formulario con la misma altura que los campos */
+.form-grid .actions button,
+.form-grid .actions .btn {
+    min-width: 120px;
+    height: 44px;
+    padding: 0 22px;
+    text-align: center;
+    line-height: 41px;
+}
+
+.form-grid .actions button {
+    line-height: normal;
+}
+
+/* ---------- Tabla de registros ---------- */
+
+.table-scroll {
+    overflow-x: auto;
+    background: var(--enamel);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+}
+
+.table-scroll table {
+    min-width: 680px;
+}
+
+.table-scroll th:first-child,
+.table-scroll td:first-child {
+    width: 56px;
+    color: var(--ink-soft);
+}
+
+.table-scroll tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+.table-scroll td.empty {
+    padding: 36px 16px;
+    text-align: center;
+    color: var(--ink-soft);
+}
+
+/* ---------- Acciones por fila ---------- */
+
+.row-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.row-actions form {
+    margin: 0;
+}
+
+.btn-sm {
+    display: inline-block;
+    padding: 6px 14px;
+    font: inherit;
+    font-size: 0.85rem;
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--indigo-700);
+    background: var(--lav-100);
+    border: 1.5px solid transparent;
+    border-radius: 8px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+}
+
+.btn-sm:hover {
+    background: #d9deff;
+}
+
+main button.btn-sm.danger {
+    color: var(--danger-ink);
+    background: var(--danger-bg);
+}
+
+main button.btn-sm.danger:hover {
+    background: #f9d4d4;
+}
+
+/* ---------- Móvil ---------- */
+
+@media (max-width: 700px) {
+    .panel {
+        padding: 20px 16px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-grid .actions button,
+    .form-grid .actions .btn {
+        flex: 1 1 100%;
+    }
+}

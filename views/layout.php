@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/../controller/BaseController.php';
 
-function layoutStart(string $titulo): void
+function layoutStart(string $titulo, string $extraCss = ''): void
 {
     $modulos = modulos();
     ?>
@@ -12,6 +12,9 @@ function layoutStart(string $titulo): void
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title><?= e($titulo) ?> | DentalClinic</title>
         <link rel="stylesheet" href="../assetes/css/odont.css">
+        <?php if ($extraCss !== ''): ?>
+            <link rel="stylesheet" href="../assetes/css/<?= e($extraCss) ?>">
+        <?php endif; ?>
     </head>
     <body>
         <header>

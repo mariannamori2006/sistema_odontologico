@@ -3,32 +3,53 @@ require_once __DIR__ . '/../controller/BaseController.php';
 exigirSesion();
 require __DIR__ . '/layout.php';
 
+// Solo el ID de la foto de Unsplash
 $imagenes = [
-    'duenos' => 'photo-1558788353-f76d92427f16',
-    'veterinarios' => 'photo-1576091160399-112ba8d25d1d',
-    'mascotas' => 'photo-1583511655857-d19b40a7a54e',
-    'servicios' => 'photo-1516734212186-a967f81ad0d7',
-    'citas' => 'photo-1517849845537-4d257902454a',
-    'diagnosticos' => 'photo-1576200419199-391ae4be7a41',
-    'tratamientos' => 'photo-1559757148-5c350d0d3c56',
-    'pagos' => 'photo-1556742049-0cfed4f6a45d',
-    'reportes' => 'photo-1456513080510-7bf3a84b82f8',
+    'pacientes'    => 'photo-1663755489920-5e09f66d011a',
+    'odontologos'  => 'photo-1588776814546-daab30f310ce',
+    'servicios'    => 'photo-1629909613654-28e377c37b09',
+    'citas'        => 'photo-1698749778813-ad5f2814e50f',
+    'diagnosticos' => 'photo-1600170311833-c2cf5280ce49',
+    'tratamientos' => 'photo-1606811971618-4486d14f3f99',
+    'pagos'        => 'photo-1628527304948-06157ee3c8a6',
+    'reportes'     => 'photo-1562240020-ce31ccb0fa7d',
 ];
 
-layoutStart('Panel de control');
+// Descripciones cortas para cada tarjeta
+$textos = [
+    'pacientes'    => 'Fichas y datos de contacto',
+    'odontologos'  => 'Equipo y especialidades',
+    'servicios'    => 'Catálogo y precios',
+    'citas'        => 'Agenda de consultas',
+    'diagnosticos' => 'Evaluaciones clínicas',
+    'tratamientos' => 'Planes y seguimiento',
+    'pagos'        => 'Cobros y comprobantes',
+    'reportes'     => 'Estadísticas e historial',
+];
+
+function imagenModulo(array $imagenes, string $id): string
+{
+    if (!isset($imagenes[$id])) {
+        return 'imagenes/dental_logo.png'; // imagen de respaldo
+    }
+    return 'https://images.unsplash.com/' . $imagenes[$id] . '?auto=format&fit=crop&w=700&h=420&q=75';
+}
+
+layoutStart('Panel de control', 'style_home.css');
 ?>
 <p>Administra la atención, el historial clínico, los servicios y los pagos.</p>
+
 <div class="cards">
     <?php foreach (modulos() as $id => $modulo): ?>
         <a class="card" href="<?= e($modulo['url']) ?>">
             <img
                 loading="lazy"
                 alt="<?= e($modulo['nombre']) ?>"
-                src="https://images.unsplash.com/<?= e($imagenes[$id]) ?>?w=700&amp;q=75"
+                src="<?= e(imagenModulo($imagenes, $id)) ?>"
             >
             <div>
                 <h2><?= e($modulo['nombre']) ?></h2>
-                <span>Administrar registros →</span>
+                <span><?= e($textos[$id] ?? 'Administrar registros') ?> →</span>
             </div>
         </a>
     <?php endforeach; ?>

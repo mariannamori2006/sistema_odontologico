@@ -6,7 +6,7 @@
         <label>
             <?= e(ucwords(str_replace('_', ' ', $campo))) ?>
 
-            <?php if (in_array($tipo, ['duenos', 'mascotas', 'veterinarios', 'servicios', 'citas', 'diagnosticos'], true)): ?>
+            <?php if (in_array($tipo, ['paciente', 'odontologo', 'servicio', 'cita', 'diagnostico'], true)): ?>
                 <?php
                 $tabla = $tipo;
                 $columna = in_array($tipo, ['citas', 'diagnosticos'], true) ? 'id' : 'nombre';
@@ -68,7 +68,7 @@
 
     <div class="actions">
         <button type="submit" name="accion" value="guardar">Guardar</button>
-        <a class="btn secondary" href="mascotas.php">Cancelar</a>
+        <a class="btn secondary" href="veterinarios.php">Cancelar</a>
         <button type="reset" class="secondary">Limpiar</button>
     </div>
 </form>

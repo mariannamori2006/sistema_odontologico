@@ -111,3 +111,20 @@ function modulos(): array
         'reportes' => ['nombre' => 'Reportes clínicos', 'url' => 'reportes.php'],
     ];
 }
+
+function etiqueta(string $campo): string
+{
+    $nombres = [
+        'paciente_id' => 'Paciente', 'odontologo_id' => 'Odontólogo',
+        'servicio_id' => 'Servicio', 'cita_id' => 'Cita',
+        'diagnostico_id' => 'Diagnóstico',
+        'fecha_nacimiento' => 'Fecha de nacimiento', 'fecha_hora' => 'Fecha y hora',
+        'fecha_inicio' => 'Fecha de inicio', 'fecha_fin' => 'Fecha de fin',
+        'fecha_pago' => 'Fecha de pago', 'fecha' => 'Fecha',
+        'telefono' => 'Teléfono', 'direccion' => 'Dirección',
+        'descripcion' => 'Descripción', 'duracion_min' => 'Duración (min)',
+        'email' => 'Correo electrónico', 'metodo' => 'Método de pago',
+        'titulo' => 'Título', 'colegiatura' => 'Colegiatura',
+    ];
+    return $nombres[$campo] ?? ucfirst(str_replace('_', ' ', $campo));
+}

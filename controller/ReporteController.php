@@ -7,8 +7,8 @@ class ReporteController
     public Reporte $modelo;
 
     public array $campos = [
-        'mascota_id' => 'mascotas',
-        'veterinario_id' => 'veterinarios',
+        'paciente_id' => 'paciente',
+        'odontologo_id' => 'odontologo',
         'titulo' => 'text',
         'contenido' => 'textarea',
         'fecha' => 'date',
