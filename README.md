@@ -1,4 +1,4 @@
-# Sistema de Veterinaria MVC
+# Sistema de Odontología MVC
 
 ## Estructura
 - `config/database.php`: **único archivo de configuración**, conexión MySQL mediante PDO.
